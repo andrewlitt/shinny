@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/shinny/',
   server: {
     proxy: {
       '/ckan': {
@@ -11,6 +12,15 @@ export default defineConfig({
         changeOrigin: true,
         secure: true,
         rewrite: (path) => path.replace(/^\/ckan/, '')
+      },
+      '/nominatim': {
+        target: 'https://nominatim.openstreetmap.org',
+        changeOrigin: true,
+        secure: true,
+        headers: {
+          'User-Agent': 'shinny-local-dev'
+        },
+        rewrite: (path) => path.replace(/^\/nominatim/, '')
       }
     }
   }
