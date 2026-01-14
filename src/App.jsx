@@ -24,9 +24,13 @@ const getWeekStart = (date) => {
 const startOfDayUTC = (date) =>
   new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()))
 
+const CKAN_API_BASE =
+  'https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/datastore_search'
+const PROD_PROXY_PREFIX =
+  import.meta.env.VITE_CKAN_PROXY || 'https://r.jina.ai/http://'
 const API_BASE = import.meta.env.DEV
   ? '/ckan/api/3/action/datastore_search'
-  : 'https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/datastore_search'
+  : `${PROD_PROXY_PREFIX}${CKAN_API_BASE}`
 const DROP_IN_RESOURCE = 'c99ec04f-4540-482c-9ee4-efb38774eab4'
 const LOCATIONS_RESOURCE = 'f23ac1ad-6f46-4b59-811f-eb34be9b1f7a'
 const DEFAULT_LOCATION_ID = 251
@@ -135,8 +139,6 @@ const normalizeRecords = (records = []) =>
     const startMinutes =
       Number(startHourValue || 0) * 60 + Number(startMinuteValue || 0)
     const title = getProgramTitle(r)
-    console.log(r['Age Min'])
-    console.log(r['Age Max'])
     return {
       title,
       section: r.Section,
@@ -266,9 +268,6 @@ function App() {
         if (options.find((opt) => opt.id === prev)) return prev
         return options[0]?.id || null
       })
-      if (locations.length) {
-        console.log('Sample location record:', locations[0])
-      }
       setListStatus('ready')
     }
 
