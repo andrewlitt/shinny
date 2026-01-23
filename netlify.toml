@@ -1,0 +1,25 @@
+# Netlify Configuration
+
+[build]
+  # Build command
+  command = "npm run build"
+
+  # Output directory (where Vite builds to)
+  publish = "dist"
+
+# Redirect rules for CKAN API proxy
+[[redirects]]
+  from = "/api/ckan/*"
+  to = "https://ckan0.cf.opendata.inter.prod-toronto.ca/:splat"
+  status = 200
+  force = true
+
+  # Add headers to handle CORS
+  [redirects.headers]
+    Access-Control-Allow-Origin = "*"
+
+# SPA fallback - redirect all routes to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

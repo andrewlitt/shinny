@@ -4,7 +4,9 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/shinny/',
+  // Netlify deploys to root, so no base path needed
+  // For GitHub Pages, you would need: base: '/shinny/'
+  base: '/',
   server: {
     proxy: {
       '/ckan': {

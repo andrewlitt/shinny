@@ -1,0 +1,4 @@
+# Netlify Redirects - Proxy CKAN API requests to avoid CORS
+
+# Proxy all requests to /api/ckan/* to the Toronto CKAN API
+/api/ckan/*  https://ckan0.cf.opendata.inter.prod-toronto.ca/:splat  200

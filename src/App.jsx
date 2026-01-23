@@ -24,14 +24,11 @@ const getWeekStart = (date) => {
 const startOfDayUTC = (date) =>
   new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()))
 
-const CKAN_API_BASE =
-  'https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/datastore_search'
-const CKAN_API_BASE_NO_SCHEME = CKAN_API_BASE.replace(/^https?:\/\//, '')
-const PROD_PROXY_PREFIX =
-  import.meta.env.VITE_CKAN_PROXY || 'https://r.jina.ai/http://'
+// In dev: use Vite proxy at /ckan
+// In prod: use Netlify proxy at /api/ckan (configured in netlify.toml)
 const API_BASE = import.meta.env.DEV
   ? '/ckan/api/3/action/datastore_search'
-  : `${PROD_PROXY_PREFIX}${CKAN_API_BASE_NO_SCHEME}`
+  : '/api/ckan/api/3/action/datastore_search'
 const DROP_IN_RESOURCE = 'c99ec04f-4540-482c-9ee4-efb38774eab4'
 const LOCATIONS_RESOURCE = 'f23ac1ad-6f46-4b59-811f-eb34be9b1f7a'
 const DEFAULT_LOCATION_ID = 251
