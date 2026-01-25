@@ -36,6 +36,7 @@ const TODAY_WEEK_START = getWeekStart(new Date())
 const TODAY_DATE = startOfDayUTC(new Date())
 const FAVORITES_STORAGE_KEY = 'shinny:favorites'
 const FILTERS_STORAGE_KEY = 'shinny:filters'
+const LOCATION_STORAGE_KEY = 'shinny:last-location'
 
 const formatDayLabel = (date) =>
   new Intl.DateTimeFormat('en-CA', {
@@ -161,8 +162,15 @@ function App() {
   const [weekStart, setWeekStart] = useState(TODAY_WEEK_START)
   const [locationOptions, setLocationOptions] = useState([])
   const [locationById, setLocationById] = useState({})
-  const [selectedLocationId, setSelectedLocationId] =
-    useState(DEFAULT_LOCATION_ID)
+  const [selectedLocationId, setSelectedLocationId] = useState(() => {
+    try {
+      const stored = window.localStorage.getItem(LOCATION_STORAGE_KEY)
+      const parsed = stored ? Number(stored) : NaN
+      return Number.isNaN(parsed) ? DEFAULT_LOCATION_ID : parsed
+    } catch {
+      return DEFAULT_LOCATION_ID
+    }
+  })
   const [dropInRecords, setDropInRecords] = useState([])
   const [favorites, setFavorites] = useState([])
   const [programFilter, setProgramFilter] = useState('all')
@@ -225,6 +233,14 @@ function App() {
       JSON.stringify({ programFilter, ageFilter })
     )
   }, [programFilter, ageFilter])
+
+  useEffect(() => {
+    if (!selectedLocationId) return
+    window.localStorage.setItem(
+      LOCATION_STORAGE_KEY,
+      String(selectedLocationId)
+    )
+  }, [selectedLocationId])
 
   useEffect(() => {
     const controller = new AbortController()
