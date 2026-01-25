@@ -475,9 +475,7 @@ function App() {
           </div>
           <div className="filters__section filters__section--center">
             <div className="filters__group filters__group--inline">
-              <label className="filters__label" htmlFor="program-filter">
-                Program
-              </label>
+              <span className="filters__label">Program</span>
               <div className="toggle" role="group" aria-label="Program filter">
                 {['all', 'skating', 'shinny'].map((value) => (
                   <button
@@ -499,9 +497,7 @@ function App() {
               </div>
             </div>
             <div className="filters__group filters__group--inline">
-              <label className="filters__label" htmlFor="age-filter">
-                Age
-              </label>
+              <span className="filters__label">Age</span>
               <div className="toggle" role="group" aria-label="Age filter">
                 {['all', 'adult', 'child'].map((value) => (
                   <button
