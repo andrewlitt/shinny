@@ -1,16 +1,52 @@
-# React + Vite
+# Toronto Shinny
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Find drop-in shinny hockey and public skating schedules at 70+ Toronto arenas and outdoor rinks.
 
-Currently, two official plugins are available:
+**Live site:** [torontoshinny.ca](https://torontoshinny.ca/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## About
 
-## React Compiler
+Toronto Shinny displays weekly drop-in skating and shinny hockey schedules pulled from the [City of Toronto Open Data](https://open.toronto.ca/) portal. Schedules update automatically so you always have current times for your rink.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Features
 
-## Expanding the ESLint configuration
+- Browse schedules at 70+ Toronto skating locations
+- Filter by program (shinny or skating) and age group (adult or child)
+- Navigate week by week (current week + 3 weeks ahead)
+- Save favourite rinks for quick access
+- Mobile-friendly responsive design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+- **React 19** with Vite
+- **City of Toronto CKAN API** for schedule data
+- **Netlify** for hosting and API proxying
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+Opens at `http://localhost:5173`. The Vite dev server proxies CKAN API requests to avoid CORS issues.
+
+## Build
+
+```bash
+npm run build
+npm run preview   # preview the production build locally
+```
+
+## Deployment
+
+Deployed to Netlify with automatic builds on push. See [NETLIFY_DEPLOYMENT.md](NETLIFY_DEPLOYMENT.md) for setup details.
+
+Netlify handles:
+- Static hosting via global CDN
+- API proxy to the Toronto CKAN endpoint (configured in `netlify.toml`)
+- SPA fallback routing
+
+## Data Source
+
+Schedule data comes from the City of Toronto [Registered Programs and Drop-In Courses](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/registered-programs-and-drop-in-courses-offering) dataset, filtered to "Skate - Drop-In" sessions.

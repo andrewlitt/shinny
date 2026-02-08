@@ -2,12 +2,73 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Toronto Shinny &amp; Skating Schedules</title>
+    <title>Toronto Shinny & Drop-In Skating Schedules | torontoshinny.ca</title>
+    <meta name="description" content="Find drop-in shinny hockey and public skating times at 70+ Toronto arenas and rinks. Weekly schedules updated from City of Toronto open data. Filter by shinny, skating, adult, and child sessions." />
+    <link rel="canonical" href="https://torontoshinny.ca/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://torontoshinny.ca/" />
+    <meta property="og:title" content="Toronto Shinny & Drop-In Skating Schedules" />
+    <meta property="og:description" content="Find drop-in shinny hockey and public skating times at 70+ Toronto arenas and rinks. Weekly schedules updated from City of Toronto open data." />
+    <meta property="og:site_name" content="Toronto Shinny" />
+    <meta property="og:locale" content="en_CA" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Toronto Shinny & Drop-In Skating Schedules" />
+    <meta name="twitter:description" content="Find drop-in shinny hockey and public skating times at 70+ Toronto arenas and rinks. Weekly schedules from City of Toronto open data." />
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="CA-ON" />
+    <meta name="geo.placename" content="Toronto" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Toronto Shinny",
+      "url": "https://torontoshinny.ca/",
+      "description": "Find drop-in shinny hockey and public skating schedules at 70+ Toronto arenas and outdoor rinks. Updated weekly from City of Toronto open data.",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CAD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Andrew Litt"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Toronto",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Ontario, Canada"
+        }
+      },
+      "keywords": "toronto shinny, drop-in hockey toronto, pickup hockey toronto, public skating toronto, toronto skating schedule, toronto arena schedule, casual hockey toronto, shinny hockey, toronto rink schedule, drop-in skating toronto"
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Toronto Shinny & Drop-In Skating Schedules</h1>
+      <p>Find drop-in shinny hockey and public skating times at over 70 Toronto arenas and outdoor rinks. Browse weekly schedules for adult shinny, public skating, and children's skating sessions across the City of Toronto.</p>
+      <p>Toronto Shinny pulls real-time schedule data from the City of Toronto open data portal so you always have up-to-date drop-in times for your favourite rink. Filter by shinny hockey or public skating, adult or child sessions, and browse week by week.</p>
+      <p>Whether you're looking for pickup hockey, casual shinny, or free public skating near you in Toronto, this schedule covers all City of Toronto indoor arenas and outdoor rinks.</p>
+      <p>Please enable JavaScript to use the interactive schedule.</p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

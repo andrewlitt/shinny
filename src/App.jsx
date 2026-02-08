@@ -243,6 +243,13 @@ function App() {
   }, [selectedLocationId])
 
   useEffect(() => {
+    const name = locationById[selectedLocationId]?.['Location Name']
+    document.title = name
+      ? `${name} – Shinny & Skating Schedule | Toronto Shinny`
+      : 'Toronto Shinny & Drop-In Skating Schedules | torontoshinny.ca'
+  }, [selectedLocationId, locationById])
+
+  useEffect(() => {
     const controller = new AbortController()
     setListStatus('loading')
     setListError(null)
